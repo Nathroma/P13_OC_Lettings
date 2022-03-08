@@ -32,8 +32,16 @@ jobs:
       - run:
           name: tests
           command: |
-          . env/bin/activate
+            . env/bin/activate
             pytest
+      - run:
+          name: linting
+          command: |
+            . env/bin/activate
+            flake8 --format=html --htmldir=flake-report
+      - store_artifacts:
+          path: flake-report/
+          destination: flake-report
 
   deploy:
     machine: true
