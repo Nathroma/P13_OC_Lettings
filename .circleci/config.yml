@@ -33,8 +33,7 @@ jobs:
           name: tests
           command: |
           . env/bin/activate
-            cd oc_lettings/
-            python3 manage.py test
+            pytest
 
   deploy:
     machine: true
