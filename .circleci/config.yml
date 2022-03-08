@@ -43,7 +43,7 @@ jobs:
           name: linting
           command: |
             . env/bin/activate
-            flake8 --format=html --htmldir=flake-report
+            flake8 --format=html --htmldir=flake-report --exclude=env
       - store_artifacts:
           path: flake-report/
           destination: flake-report
