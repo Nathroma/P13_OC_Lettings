@@ -8,7 +8,6 @@ workflows:
   integration:
     jobs:
       - build-test
-      - containerization:
           requires:
             - build-test
           filters:
