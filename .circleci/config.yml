@@ -8,10 +8,13 @@ workflows:
   integration:
     jobs:
       - build-test
-          requires: build-test
+      - deploy:
+          requires: 
+            - build-test
           filters:
             branches:
-              only: master
+              only: 
+                - master
 
 
 jobs:
