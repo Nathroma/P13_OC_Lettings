@@ -14,7 +14,7 @@ from distutils.log import debug
 from pathlib import Path
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
-import dj_database_url
+#import dj_database_url
 
 sentry_sdk.init(
     dsn="https://91248de902db46cd845e79da41f9cb5f@o1138765.ingest.sentry.io/6236977",
@@ -103,8 +103,8 @@ DATABASES = {
     }
 }
 
-if debug == False:
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+#if debug == False:
+#    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
 # Password validation
