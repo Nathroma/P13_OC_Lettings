@@ -1,8 +1,21 @@
+from django.test import Client, TestCase
 from django.urls import reverse
 
-class TestHomePage:
 
-    def test_index(self,client):
-        response = client.get(reverse('index'))
-        assert response.status_code == 200
-        assert "<title>Holiday Homes</title>" in response.content.decode('utf-8')
+class TestViews(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.index_url = reverse('index')
+
+    def test_index_GET(self):
+        response = self.client.get(self.index_url)
+        self.assertEquals(response.status_code, 200)
+
+    def test_index_title(self):
+        response = self.client.get(self.index_url)
+        self.assertIn(b'Holiday Homes', response.content)
+
+    def test_index_template(self):
+        response = self.client.get(self.index_url)
+        self.assertTemplateUsed(response, 'app_profiles/index.html')
