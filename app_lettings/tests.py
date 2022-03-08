@@ -4,7 +4,6 @@ from django.test import Client
 from django.urls import reverse
 
 
-@pytest.mark.django_db
 class TestLettings:
 
     def setup_method(self):

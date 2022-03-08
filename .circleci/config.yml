@@ -22,10 +22,14 @@ jobs:
       - image: cimg/python:3.8
     steps:
       - checkout
-      - python/install-packages:
-          pkg-manager: pip
       - run:
-          name: Run tests
+          name: Install packages
+          command: |
+            python3 -m venv env
+            .\env\Scripts\activate
+            pip install -r requirements.txt
+      - run:
+          name: tests
           command: pytest
   deploy:
     machine: true
