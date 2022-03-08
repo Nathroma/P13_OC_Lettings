@@ -29,10 +29,13 @@ jobs:
             python3 -m venv env
             . env/bin/activate
             pip install -r requirements.txt
-            pip install pytest
       - run:
           name: tests
-          command: pytest
+          command: |
+          . env/bin/activate
+            cd oc_lettings/
+            python3 manage.py test
+
   deploy:
     machine: true
     steps:
