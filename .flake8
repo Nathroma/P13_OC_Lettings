@@ -1,0 +1,10 @@
+[flake8]
+ignore = F841
+exclude =
+    .git,
+    __pycache__,
+    migrations
+    env
+    flake-report
+max-complexity = 10
+max-line-length = 120

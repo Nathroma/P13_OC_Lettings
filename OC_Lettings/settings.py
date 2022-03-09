@@ -10,11 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-from distutils.log import debug
 from pathlib import Path
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
-#import dj_database_url
 
 sentry_sdk.init(
     dsn="https://91248de902db46cd845e79da41f9cb5f@o1138765.ingest.sentry.io/6236977",
@@ -99,12 +97,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
-    
+
     }
 }
-
-#if debug == False:
-#    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
 # Password validation
