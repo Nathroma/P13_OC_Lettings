@@ -9,7 +9,6 @@ class TestViews(TestCase):
 
     def setUp(self):
         self.client = Client()
-
         self.user_obj = User.objects.create(username='testuser', password='Abc1234!')
         self.profile_obj = Profile.objects.create(user=self.user_obj, favorite_city='Paris')
 
