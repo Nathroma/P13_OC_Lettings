@@ -4,12 +4,13 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
 
-WORKDIR /
+WORKDIR /code
 
-COPY requirements.txt requirements.txt
+COPY requirements.txt /code/
+
 RUN pip install -r requirements.txt
 
-COPY . .
+COPY . /code/
 
 EXPOSE $PORT
 
