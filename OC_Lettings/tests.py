@@ -18,4 +18,4 @@ class TestViews(TestCase):
 
     def test_index_template(self):
         response = self.client.get(self.index_url)
-        self.assertTemplateUsed(response, 'index.html')
+        self.assertTemplateUsed(response, 'oc_lettings/index.html')
