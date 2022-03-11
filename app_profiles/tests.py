@@ -33,7 +33,7 @@ class TestViews(TestCase):
 
     def test_profile_title(self):
         response = self.client.get(self.profile_url)
-        self.assertIn(b'testuser', response.content)
+        self.assertIn(b'test', response.content)
 
     def test_profile_template(self):
         response = self.client.get(self.profile_url)
