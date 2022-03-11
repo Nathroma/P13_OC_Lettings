@@ -24,9 +24,15 @@ jobs:
     steps:
       - checkout
       - run:
+<<<<<<< HEAD
           name: Echo SECRET_KEY
           command : |
             echo $SECRET_KEY
+=======
+        name: "Echo SECRET_KEY"
+        command : |
+          echo $SECRET_KEY
+>>>>>>> d97e740b90970a55ef67fadf947e3821a773f4f3
       - run:
           name: Install packages
           command: |
