@@ -24,7 +24,7 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Echo SECRET_KEY
+        name: "Echo SECRET_KEY"
         command : |
           echo $SECRET_KEY
       - run:
