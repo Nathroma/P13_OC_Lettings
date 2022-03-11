@@ -19,6 +19,10 @@ class TestViews(TestCase):
         response = self.client.get(self.profiles_index_url)
         self.assertEquals(response.status_code, 200)
 
+    def test_index_title(self):
+        response = self.client.get(self.profiles_index_url)
+        self.assertIn(b'Profiles', response.content)
+
     def test_index_template(self):
         response = self.client.get(self.profiles_index_url)
         self.assertTemplateUsed(response, 'profiles/index.html')
@@ -26,6 +30,10 @@ class TestViews(TestCase):
     def test_profile_GET(self):
         response = self.client.get(self.profile_url)
         self.assertEquals(response.status_code, 200)
+
+    def test_profile_title(self):
+        response = self.client.get(self.profile_url)
+        self.assertIn(b'testuser', response.content)
 
     def test_profile_template(self):
         response = self.client.get(self.profile_url)

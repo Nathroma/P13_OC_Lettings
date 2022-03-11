@@ -16,6 +16,7 @@ class TestViews(TestCase):
             country_iso_code='USA',
         )
         self.letting_obj = Letting.objects.create(title='TestTitle', address=self.address_obj)
+
         self.lettings_index_url = reverse('lettings_index')
         self.letting_url = reverse('letting', args=[self.letting_obj.id])
 
@@ -30,6 +31,10 @@ class TestViews(TestCase):
     def test_letting_GET(self):
         response = self.client.get(self.letting_url)
         self.assertEquals(response.status_code, 200)
+
+    def test_letting_title(self):
+        response = self.client.get(self.letting_url)
+        self.assertIn(b'TestTitle', response.content)
 
     def test_letting_template(self):
         response = self.client.get(self.letting_url)

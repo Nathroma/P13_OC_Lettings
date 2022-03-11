@@ -13,9 +13,13 @@ import os
 from pathlib import Path
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+import dotenv
+
+dotenv.read_dotenv()
+
 
 sentry_sdk.init(
-    dsn="https://91248de902db46cd845e79da41f9cb5f@o1138765.ingest.sentry.io/6236977",
+    dsn = os.environ.get("SENTRY_KEY"),
     integrations=[DjangoIntegration()],
 
     # Set traces_sample_rate to 1.0 to capture 100%
@@ -37,10 +41,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=^fa5p)c*)96l72-xuvq24wmddi4dbes=%%u67u_s97(!*wz_='
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG")
 
 ALLOWED_HOSTS = ['*']
 

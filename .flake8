@@ -6,5 +6,6 @@ exclude =
     migrations
     env
     flake-report
+    .env
 max-complexity = 10
 max-line-length = 120
