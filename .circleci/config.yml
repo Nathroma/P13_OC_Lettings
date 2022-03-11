@@ -24,6 +24,10 @@ jobs:
     steps:
       - checkout
       - run:
+        name: Echo SECRET_KEY
+        command : |
+          echo $SECRET_KEY
+      - run:
           name: Install packages
           command: |
             python3 -m venv env
