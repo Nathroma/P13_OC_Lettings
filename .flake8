@@ -7,5 +7,6 @@ exclude =
     env
     flake-report
     .env
+    README.md
 max-complexity = 10
 max-line-length = 120
