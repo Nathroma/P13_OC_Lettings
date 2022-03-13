@@ -16,7 +16,6 @@ workflows:
               only: 
                 - master
 
-
 jobs:
   build-test: 
     docker:
