@@ -56,7 +56,6 @@ jobs:
     
     steps:
       - checkout
-      - setup_docker
 
       - run:
           name: Package app and push to DockerHub
