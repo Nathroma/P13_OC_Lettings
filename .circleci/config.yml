@@ -58,13 +58,9 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Echo SECRET_KEY
-          command : |
-            echo $SECRET_KEY
-      - run:
           name: Package app and push to DockerHub
           command: |
-            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+            echo $SECRET_KEY | echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
             docker build -t $DOCKER_USERNAME/oc_lettings:$CIRCLE_SHA1 .
             docker push $DOCKER_USERNAME/oc_lettings:$CIRCLE_SHA1
 
