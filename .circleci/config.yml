@@ -8,13 +8,16 @@ workflows:
   integration:
     jobs:
       - build-test
-      - deploy:
-          requires: 
+      - container:
+          requires:
             - build-test
+      - deploy:
+          requires:
+            - build-test
+            - container
           filters:
             branches:
-              only: 
-                - master
+              only: master
 
 jobs:
   build-test: 
@@ -46,6 +49,21 @@ jobs:
       - store_artifacts:
           path: flake-report/
           destination: flake-report
+  
+  container:
+    docker:
+      - image: cimg/python:3.8
+    
+    steps:
+      - checkout
+      - setup_docker
+
+      - run:
+          name: Package app and push to DockerHub
+          command: |
+            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+            docker build -t $DOCKER_USERNAME/oc_lettings:$CIRCLE_SHA1 .
+            docker push $DOCKER_USERNAME/oc_lettings:$CIRCLE_SHA1
 
   deploy:
     machine: true
