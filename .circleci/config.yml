@@ -57,7 +57,10 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      
+      - run:
+          name: Echo SECRET_KEY
+          command : |
+            echo $SECRET_KEY
       - run:
           name: Package app and push to DockerHub
           command: |
